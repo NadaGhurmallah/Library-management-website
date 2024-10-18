@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.hashers import make_password
 from .models import User
+from django.http import HttpRequest
 
 
 
@@ -51,3 +52,30 @@ def register_view(request):
 
 def home(request):
     return render(request, 'Library/home.html') 
+
+def addBook(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        author = request.POST.get('author')
+        genre = request.POST.get('genre')
+        published_date = request.POST.get('published_date')
+
+        book = Book(title=title, author=author, genre=genre, published_date=published_date)
+        book.save()
+        
+        return redirect('view_books')  # Redirect to view that shows all books############
+    return render(request, 'addBook.html')
+
+
+def deleteBook(request):
+    if request.method == "POST":
+        title = request.POST.get('title')
+        
+        try:
+            book = Book.objects.get(title=title)
+            book.delete()
+            return redirect('view_books')  # Redirect to list of books##########
+        except Book.DoesNotExist:
+            return render(request, 'deleteBook.html', {'error': 'Book not found'})
+    
+    return render(request, 'deleteBook.html')
