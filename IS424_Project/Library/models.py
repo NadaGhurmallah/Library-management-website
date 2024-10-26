@@ -8,3 +8,11 @@ class User(models.Model):
 
     def __str__(self):
         return self.username
+ 
+class Book(models.Model):
+    title = models.CharField(max_length=250)
+    author = models.CharField(max_length=150)
+    genre = models.CharField(max_length=150)
+
+    def __str__(self):
+        return self.title
