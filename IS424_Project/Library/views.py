@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth.hashers import make_password
-from .models import User
+from .models import User , Book
 from django.http import HttpRequest
 
 
@@ -79,3 +79,14 @@ def deleteBook(request):
             return render(request, 'deleteBook.html', {'error': 'Book not found'})
     
     return render(request, 'deleteBook.html')
+
+def allBooks(request):
+    books = Book.objects.all()  
+    return render(request, 'Library/allBooks.html', {'books': books})
+
+def specificBook(request, book_id):
+    try:
+        book = Book.objects.get(id=book_id) 
+        return render(request, 'Library/specificBook.html', {'book': book})
+    except Book.DoesNotExist: #book not found
+        return render(request, 'Library/allBooks.html', {'error': 'Book not found'})
