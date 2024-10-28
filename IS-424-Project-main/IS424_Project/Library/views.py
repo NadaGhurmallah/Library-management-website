@@ -78,8 +78,8 @@ def addBook(request):#requirement 6
 
         book = Book(title=title, author=author, genre=genre, published_date=published_date)
         book.save()
-        
-        return redirect('view_books')  # Redirect to view that shows all books############
+        messages.success(request, "Book added successfully!")
+        return redirect('Library:allBooks')  # Redirect to view that shows all books############
     return render(request, 'addBook.html')
 
 def update_book(request):  
@@ -112,7 +112,8 @@ def deleteBook(request):#requirement 8
         try:
             book = Book.objects.get(title=title)
             book.delete()
-            return redirect('view_books')  # Redirect to list of books##########
+            messages.success(request, "Book deleted successfully!")
+            return redirect('Library:allBooks')  # Redirect to list of books##########
         except Book.DoesNotExist:
             return render(request, 'deleteBook.html', {'error': 'Book not found'})
     
