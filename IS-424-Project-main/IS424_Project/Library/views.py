@@ -65,7 +65,7 @@ def specificBook(request, book_id):#requirement 5
             book.reserved_by.add(request.user)
             book.save()
             return redirect('Library:specificBook', book_id=book_id)
-            
+        return render(request, 'specificBook.html', {'book': book})
     except Book.DoesNotExist: #book not found
         return render(request, 'Library/allBooks.html', {'error': 'Book not found'})
     
