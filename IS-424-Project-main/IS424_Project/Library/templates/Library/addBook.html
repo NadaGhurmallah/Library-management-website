@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <title>ADD BOOK</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <br>
+        <h1 style="text-align: center;">Add a New Book</h1>
+        <form action="{% url 'library:addBook' %}" method="POST">
+        <br>
+        <div style="text-align: center;">
+        <input type="text" placeholder="Title" name="title">
+        <input type="text" placeholder="Author"  name="author">
+        <input type="text" placeholder="Genre" name="genre">
+        <input type="text" placeholder="Published Date" name="published_date">
+ 
+        <button type="submit">Add Book</button>
+        </form>
+        </div>
+
+    </body>
+</html>
+
