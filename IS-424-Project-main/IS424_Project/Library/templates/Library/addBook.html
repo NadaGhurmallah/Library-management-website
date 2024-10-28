@@ -7,6 +7,14 @@
 <body>
     <div class="form-container">
         <h1>Add a New Book</h1>
+
+        <!-- Alert messages for success or error feedback -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
         <form action="{% url 'Library:add' %}" method="POST">
             {% csrf_token %}
             <input type="text" placeholder="Title" name="title" required>
