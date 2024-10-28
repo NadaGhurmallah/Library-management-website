@@ -87,6 +87,10 @@ def allBooks(request):
 def specificBook(request, book_id):
     try:
         book = Book.objects.get(id=book_id) 
-        return render(request, 'Library/specificBook.html', {'book': book})
+        if request.method == "POST" and 'reserve' in request.POST:
+            book.reserved_by.add(request.user)
+            book.save()
+            return redirect('library:specificBook', book_id=book_id)
+            
     except Book.DoesNotExist: #book not found
         return render(request, 'Library/allBooks.html', {'error': 'Book not found'})
