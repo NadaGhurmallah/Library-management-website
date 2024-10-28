@@ -15,8 +15,8 @@
                 {% csrf_token %}
                 <button type="submit" name="reserve">Reserve Book</button>
             </form>
-            <a href="{% url 'library:updateBook' book.id %}">Update Book</a> 
-            <a href="{% url 'library:deleteBook' %}">Delete Book</a>
+            <a href="{% url 'Library:updateBook' book.id %}">Update Book</a> 
+            <a href="{% url 'Library:deleteBook' %}">Delete Book</a>
         </div>
     </body>
 </html>
