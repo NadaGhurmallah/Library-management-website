@@ -20,7 +20,7 @@
                 <td>{{ book.author }}</td>
                 <td>{{ book.genre }}</td>
                 <td>{{ book.published_date }}</td>
-                <td><a href="{% url 'library:specificBook' book.id %}">View Details</a></td>
+                <td><a href="{% url 'Library:specificBook' book.id %}">View Details</a></td>
             </tr>
             {% endfor %}
         </table>
