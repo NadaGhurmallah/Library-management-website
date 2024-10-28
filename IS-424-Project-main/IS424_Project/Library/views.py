@@ -69,18 +69,21 @@ def specificBook(request, book_id):#requirement 5
     except Book.DoesNotExist: #book not found
         return render(request, 'Library/allBooks.html', {'error': 'Book not found'})
     
-def addBook(request):#requirement 6
+def addBook(request): 
     if request.method == "POST":
         title = request.POST.get('title')
         author = request.POST.get('author')
         genre = request.POST.get('genre')
         published_date = request.POST.get('published_date')
-
+        #save the new book record
         book = Book(title=title, author=author, genre=genre, published_date=published_date)
         book.save()
+        # Display a success message 
         messages.success(request, "Book added successfully!")
-        return redirect('Library:allBooks')  # Redirect to view that shows all books############
-    return render(request, 'addBook.html')
+        # Redirect to shows all books
+        return redirect('Library:allBooks')
+    
+    return render(request, 'Library/addBook.html')
 
 def update_book(request):  
     if request.method == "POST":
@@ -104,20 +107,23 @@ def update_book(request):
 
 
 
-def deleteBook(request):#requirement 8
+def deleteBook(request): 
     if request.method == "POST":
         title = request.POST.get('title')
-
-        
         try:
+            # find and delete the book
             book = Book.objects.get(title=title)
             book.delete()
+            # Show a success message 
             messages.success(request, "Book deleted successfully!")
-            return redirect('Library:allBooks')  # Redirect to list of books##########
+            # Redirect to  all books
+            return redirect('Library:allBooks')
         except Book.DoesNotExist:
-            return render(request, 'deleteBook.html', {'error': 'Book not found'})
-    
-    return render(request, 'deleteBook.html')
+            # If the book does not exist, show an error message on the same page
+            messages.error(request, "Book not found.")
+            return render(request, 'Library/deleteBook.html')  
+
+    return render(request, 'Library/deleteBook.html')
 
 
     
