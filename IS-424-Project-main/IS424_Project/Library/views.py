@@ -87,16 +87,21 @@ def addBook(request):
 
 def update_book(request):  
     if request.method == "POST":
-        title = request.POST.get('title') 
-        book = get_object_or_404(Book, title=title)  # Retrieve the book by title
-        
         # Update the book's details
-        book.author = request.POST.get('author', book.author)
-        book.publication_date = request.POST.get('publication_date', book.publication_date)
-        book.genre = request.POST.get('genre', book.genre)
-        book.save()
+        Book.title = request.POST.get('title', Book.title)
+        Book.author = request.POST.get('author', Book.author)
+        Book.published_date = request.POST.get('published_date', Book.published_date)
+        Book.genre = request.POST.get('genre', Book.genre)
+        Book.save()
         
-        return render(request, 'Library/specificBook.html', {'book': book})  # Redirect to the updated book's details
+        return render(request, 'Library/specificBook.html', {'book': Book})  # Redirect to the updated book's details
+
+    
+        
+    return render(request, "Library/update_book.html", {"book": Book})  # Render update form with book details
+
+
+
 
     else: 
         # Handle GET request to show the form with pre-filled book details
