@@ -10,9 +10,11 @@ class User(models.Model):
         return self.username
  
 class Book(models.Model):
-    title = models.CharField(max_length=250)
-    author = models.CharField(max_length=150)
-    genre = models.CharField(max_length=150)
+    title = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
+    genre = models.CharField(max_length=50)
+    published_date = models.DateField()
+    reserved_by = models.ManyToManyField(User, related_name='reserved_books', blank=True)
 
-    def __str__(self):
-        return self.title
+    def _str_(self):
+        return self.title
