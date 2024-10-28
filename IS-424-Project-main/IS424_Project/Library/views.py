@@ -110,20 +110,19 @@ def update_book(request):
 def deleteBook(request): 
     if request.method == "POST":
         title = request.POST.get('title')
-        try:
-            # find and delete the book
-            book = Book.objects.get(title=title)
-            book.delete()
-            # Show a success message 
-            messages.success(request, "Book deleted successfully!")
-            # Redirect to  all books
+        
+        books = Book.objects.filter(title=title)
+        
+        if books.exists():
+            books.delete()
+            messages.success(request, "Book(s) deleted successfully!")
             return redirect('Library:allBooks')
-        except Book.DoesNotExist:
-            # If the book does not exist, show an error message on the same page
+        else:
             messages.error(request, "Book not found.")
-            return render(request, 'Library/deleteBook.html')  
-
+            return render(request, 'Library/deleteBook.html')
+    
     return render(request, 'Library/deleteBook.html')
+
 
 
     
