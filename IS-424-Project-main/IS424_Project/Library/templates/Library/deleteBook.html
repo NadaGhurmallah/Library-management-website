@@ -7,6 +7,14 @@
 <body>
     <div class="form-container">
         <h1>Delete a Book</h1>
+
+        <!-- Alert messages for success or error feedback -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
         <form action="{% url 'Library:delete' %}" method="POST">
             {% csrf_token %}
             <label>Enter Book Title to Delete</label>
