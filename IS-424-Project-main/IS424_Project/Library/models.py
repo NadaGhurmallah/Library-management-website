@@ -17,4 +17,4 @@ class Book(models.Model):
     reserved_by = models.ManyToManyField(User, related_name='reserved_books', blank=True)
 
     def _str_(self):
-        return self.title
+        return self.title
