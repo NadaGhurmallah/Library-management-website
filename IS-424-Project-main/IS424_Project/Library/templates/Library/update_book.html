@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Book</title>
     <link rel="stylesheet" href="{% static 'Library/styles.css' %}"> 
+    <script>
+	function seved_update(){
+		alert('Your update has been seved ');
+	}
+	</script>
 </head>
 <body>
     <header class="header">
@@ -31,7 +36,7 @@
         </div>
         
         <br/><br/>
-        <button type="submit">Save changes</button>
+        <button onclick="seved_update()",type="submit">Save changes</button>
     </form>
     
     <br>
