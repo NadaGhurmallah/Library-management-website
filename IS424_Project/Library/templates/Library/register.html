@@ -1,4 +1,3 @@
-
 {% extends "Library/base.html" %}
 
 {% block title %}Register - Library Management{% endblock %}
@@ -25,7 +24,7 @@
                     </div>
                     <button type="submit" class="btn btn-primary btn-block">Register</button>
                 </form>
-                <p class="text-center mt-3">Already have an account? <a href="{% url 'login' %}" class="footer-link">Login here</a></p>
+                <p class="text-center mt-3">Already have an account? <a href="{% url 'Library:login' %}" class="footer-link">Login here</a></p>
                 {% if messages %}
                     <div class="alert alert-danger mt-2">
                         {% for message in messages %}

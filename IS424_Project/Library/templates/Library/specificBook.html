@@ -1,0 +1,21 @@
+{% extends 'Library/base.html' %}
+
+{% block content %}
+<div class="container mt-5" style="font-family: Arial, Helvetica, sans-serif;">
+    <h2><strong>Book Title: </strong> {{ book.title }}</h2>
+    <p><strong>Author:</strong> {{ book.author }}</p>
+    <p><strong>Genre:</strong> {{ book.genre }}</p>
+    <p><strong>Published Date:</strong> {{ book.published_date }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" >Reserve Book</button>
+        <a href="{% url 'Library:update_book' username book.id %}" class="btn btn-primary">Update Book</a>
+    <a href="{% url 'Library:deleteBook' username book.id %}" class="btn btn-primary">Delete Book</a>
+    </form>
+</div>
+</br>
+<div class="container mt-5">
+    <a href="{% url 'Library:menu' username %}" class="btn btn-primary">Back to menu</a>
+</div>
+{% endblock %}

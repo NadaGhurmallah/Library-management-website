@@ -1,23 +1,20 @@
-<html>
-    <head>
-        <title>ADD BOOK</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <br>
-        <h1 style="text-align: center;">Add a New Book</h1>
-        <form action="{% url 'library:addBook' %}" method="POST">
-        <br>
-        <div style="text-align: center;">
-        <input type="text" placeholder="Title" name="title">
-        <input type="text" placeholder="Author"  name="author">
-        <input type="text" placeholder="Genre" name="genre">
-        <input type="text" placeholder="Published Date" name="published_date">
- 
-        <button type="submit">Add Book</button>
-        </form>
-        </div>
+{% extends "Library/base.html" %}
+{% load static %} 
 
-    </body>
-</html>
+{% block title %}Add Book - Library Management{% endblock %}
 
+{% block content %}
+<div class="form-container">
+    <h1 style="text-align: center; font-family: Arial, Helvetica, sans-serif;">Add a New Book</h1>
+</br>
+
+    <form action="{% url 'Library:addbook' username %}" method="POST" style="text-align: center;">
+        {% csrf_token %}
+        <input type="text" placeholder="Title" name="title" required>
+        <input type="text" placeholder="Author" name="author" required>
+        <input type="text" placeholder="Genre" name="genre" required>
+        <input type="date" placeholder="Published Date" name="published_date" required>
+        <button type="submit" class="submit-btn">Add Book</button>
+    </form>
+</div>
+{% endblock %}

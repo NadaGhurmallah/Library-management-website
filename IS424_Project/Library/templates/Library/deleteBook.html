@@ -1,19 +1,16 @@
-<html>
-    <head>
-        <title>DELETE BOOK</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <br>
-        <h1 style="text-align: center;">Delete a  Book</h1>
-        <br>
-        <div style="text-align: center;">
-        <p>Enter Book Title To Delete</p>
-        <input type="text" placeholder="Book Title" name="title"> 
-        <button type="submit">Delete Book</button>
-        </form>
-        </div>
+{% extends "Library/base.html" %}
+{% load static %} 
 
-    </body>
-</html>
+{% block title %}Delete Book - Library Management{% endblock %}
 
+{% block content %}
+<div class="form-container">
+
+
+    <form action="{% url 'Library:deleteBook' username book.id %}" method="POST">
+        {% csrf_token %}
+        <label> are you sure you want to delete {{ book.title }} book?</label>
+        <button type="submit" class="submit-btn delete-btn">Delete Book</button>
+    </form>
+</div>
+{% endblock %}

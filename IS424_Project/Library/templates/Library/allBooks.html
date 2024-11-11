@@ -1,0 +1,33 @@
+{% extends 'Library/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Genre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for book in books %}
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.genre }}</td>
+                <td>
+                    <a href="{% url 'Library:specificBook' username book.id %}" class="btn btn-info btn-sm">View Details</a>
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</br>
+<div style="text-align: center;">
+    <a href="{% url 'Library:menu' username%}" class="btn btn-info btn-sm">Back to menu</a>
+</div>
+{% endblock %}

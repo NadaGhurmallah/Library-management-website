@@ -1,0 +1,37 @@
+{% extends "Library/base.html" %}
+{% load static %} 
+
+{% block title %}Update Book - Library Management{% endblock %}
+
+{% block content %}
+</br>
+<form method="POST" action="{% url 'Library:update_book' username book.id %}">
+    {% csrf_token %}
+    
+    <div>
+        <label for="title">Book Title</label>
+        <input type="text" id="title" name="title" value="{{ book.title }}" required>
+    
+        <label for="author">Author:</label>
+        <input type="text" id="author" name="author" value="{{ book.author }}" required>
+    
+        <label for="publication_date">Publication Date:</label>
+        <input type="date" id="publication_date" name="published_date" value="{{ book.published_date|date:'Y-m-d' }}" required>
+    
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" value="{{ book.genre }}" required>
+    </div>
+    
+    <br/><br/>
+    <button type="submit" onclick="saved_update()">Save changes</button>
+</form>
+
+<br>
+
+
+<script>
+    function saved_update() {
+        alert('Your update has been saved.');
+    }
+</script>
+{% endblock %}

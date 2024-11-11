@@ -1,37 +1,137 @@
+/* General Styles */
 body {
-    background-color: #f3f9ff; 
+    background-color: #eef4fc; /* Softer background color for better readability */
+    font-family: 'Arial', sans-serif; /* Modern font for better legibility */
 }
 
+/* Header */
 .header {
     text-align: center;
-    align-items: center;
     padding: 20px 0;
-    background-color: rgb(208, 167, 116);
+    background-color: #fdfdfd; /* Subtle background for header */
+    border-bottom: 2px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
 }
 
 .header .logo {
-    max-width: 100px;
-    margin-right: 15px;
+    max-width: 80px; /* Slightly smaller logo for balance */
+    margin-right: 10px;
 }
 
 .header .title {
-    font-size: 30px;
-    color: #333;
-    font-family: 'Times New Roman', Times, serif;
+    font-size: 32px;
+    color: #2c3e50; /* Deep navy for contrast */
+    font-family: 'Georgia', serif; /* Elegant serif font for title */
+    margin-top: 10px;
 }
 
+/* Links Section */
+.baz a {
+    display: block;
+    padding: 10px 20px;
+    margin: 10px 0;
+    color: #fff;
+    background-color: #5dade2; /* Calm blue for links */
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.baz a:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    color: #f1f1f1;
+    transform: translateY(-2px); /* Lift effect on hover */
+    transition: all 0.3s ease;
+}
+
+/* Card Component */
 .card {
-    border-radius: 15px; /* Round the corners of the card */
+    border-radius: 15px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+    margin-bottom: 20px;
+    border: none; /* Remove border for a clean look */
 }
 
 .card-body {
-    padding: 40px; /* Add padding inside the card */
+    padding: 30px;
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 15px;
 }
 
+/* Footer Links */
 .footer-link {
-    color: #007bff; /* Bootstrap link color */
+    color: #3498db; /* Brighter blue for footer links */
 }
 
 .footer-link:hover {
-    text-decoration: underline; /* Underline on hover */
+    text-decoration: underline;
+    color: #1f618d; /* Darker blue on hover */
+}
+
+/* Form Container */
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 25px;
+    background-color: #ffffff; /* White for better form visibility */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* Headings inside forms */
+.form-container h1 {
+    font-family: 'Verdana', sans-serif;
+    color: #2c3e50; /* Deep navy for contrast */
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* Form Inputs */
+.form-container input[type="text"],
+.form-container input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9; /* Subtle background for input fields */
+}
+
+/* Buttons */
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f5b041; /* Warm orange for call-to-action */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #d68910; /* Darker orange on hover */
+}
+
+.delete-btn {
+    background-color: #e74c3c; /* Strong red for delete */
+    font-weight: bold;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Form Error Messages */
+.form-error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin-bottom: 10px;
 }
