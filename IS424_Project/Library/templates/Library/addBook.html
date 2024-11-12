@@ -14,7 +14,15 @@
         <input type="text" placeholder="Author" name="author" required>
         <input type="text" placeholder="Genre" name="genre" required>
         <input type="date" placeholder="Published Date" name="published_date" required>
-        <button type="submit" class="submit-btn">Add Book</button>
+        <button type="submit" class="submit-btn" onclick="added()">Add Book</button>
     </form>
 </div>
+<div style="text-align: center;">
+    <a href="{% url 'Library:menu' username=username %}" class="btn btn-warning w-50">Go to Menu</a>
+</div>
+<script>
+    function added() {
+        alert('The book is added successfully. ');
+    }
+</script>
 {% endblock %}
