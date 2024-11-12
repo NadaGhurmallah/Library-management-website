@@ -30,7 +30,7 @@ def login_view(request):
             if check_password(password, user.password):
                 # Login successful
                 messages.success(request, "Login successful!")
-                return redirect('Library:menu', username=user.username)  
+                return redirect('Library:all_books', username=user.username)  
             else:
                 messages.error(request, "Incorrect password.")
         except User.DoesNotExist:
@@ -112,6 +112,8 @@ def update_book(request, username, book_id):
     if request.method == 'POST':
         book.title = request.POST.get('title')
         book.author = request.POST.get('author')
+        book.genre=request.POST.get('genre')
+        book.published_date=request.POST.get('published_date')
         book.save()
         return redirect('Library:all_books', username=username)  
 
@@ -128,3 +130,7 @@ def deleteBook(request,username,  book_id):
         return redirect('Library:all_books', username=username)  
 
     return render(request, 'Library/deleteBook.html', {'book': book, 'username': username})
+
+def logout(request):
+    return render(request, 'Library/login.html')
+
