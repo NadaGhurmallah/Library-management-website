@@ -8,9 +8,14 @@
     <div class="card p-4 shadow-lg">
         <h2 class="text-center mb-4">Menu</h2>
         <div class="d-flex flex-column align-items-center">
-            <a href="{% url 'Library:all_books' username %}" class="btn btn-primary mb-3 w-50">View All Books</a>
+            <a href="{% url 'Library:login' %}" class="btn btn-primary mb-3 w-50">Log in</a>
+            <a href="{% url 'Library:register' %}" class="btn btn-primary mb-3 w-50">Register</a>
             <a href="{% url 'Library:addbook' username %}" class="btn btn-primary mb-3 w-50">Add Book</a>
-            <a href="{% url 'Library:login' %}" class="btn btn-primary w-50">Logout</a>
+            <a href="{% url 'Library:all_books' username %}" class="btn btn-primary mb-3 w-50">View All Books</a>
+            <a href="{% url 'Library:all_books' username %}" class="btn btn-primary mb-3 w-50">View specific Book</a>
+            <a href="{% url 'Library:all_books' username %}" class="btn btn-primary mb-3 w-50">Update a book</a>
+            <a href="{% url 'Library:all_books' username %}" class="btn btn-primary mb-3 w-50">Delete a book</a>
+            <a href="{% url 'Library:logout' %}" class="btn btn-primary mb-3 w-50">Logout</a>
         </div>
     </div>
 </div>
