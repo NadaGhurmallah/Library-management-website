@@ -12,6 +12,7 @@ urlpatterns = [
     path('allBooks/<str:username>/', views.all_books, name='all_books'),
     path('specificBook/<str:username>/<int:book_id>/', views.specificBook, name='specificBook'),
     path('update_book/<str:username>/<int:book_id>/', views.update_book, name='update_book'), 
-    path('logout/',views.logout , name='logout')
+    path('logout/',views.logout_view , name='logout')
 ]
+
 
