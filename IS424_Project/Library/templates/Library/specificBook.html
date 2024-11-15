@@ -9,9 +9,13 @@
 
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-primary" >Reserve Book</button>
+        {% if not is_reserved %}
+            <button type="submit" class="btn btn-primary">Reserve Book</button>
+        {% else %}
+            <button type="button" class="btn btn-secondary" disabled>Already Reserved</button>
+        {% endif %}
         <a href="{% url 'Library:update_book' username book.id %}" class="btn btn-primary">Update Book</a>
-    <a href="{% url 'Library:deleteBook' username book.id %}" class="btn btn-primary">Delete Book</a>
+        <a href="{% url 'Library:deleteBook' username book.id %}" class="btn btn-primary">Delete Book</a>
     </form>
 </div>
 </br>
