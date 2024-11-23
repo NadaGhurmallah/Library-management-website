@@ -75,7 +75,7 @@ def register_view(request):
 
 
 def all_books(request, username):
-    books = Book.objects.filter(user__username=username)
+    books = Book.objects.all()
     return render(request, 'Library/allBooks.html', {'books': books, 'username': username})
 
 
