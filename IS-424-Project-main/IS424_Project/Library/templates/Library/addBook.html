@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>ADD BOOK</title>
+    <link rel="stylesheet" href="{% static 'Library/style.css' %}">
+
+</head>
+<body>
+    <div class="form-container">
+        <h1>Add a New Book</h1>
+
+        <!-- Alert messages for success or error feedback -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'Library:add' %}" method="POST">
+            {% csrf_token %}
+            <input type="text" placeholder="Title" name="title" required>
+            <input type="text" placeholder="Author" name="author" required>
+            <input type="text" placeholder="Genre" name="genre" required>
+            <input type="date" placeholder="Published Date" name="published_date" required>
+            <button type="submit" class="submit-btn">Add Book</button>
+        </form>
+    </div>
+</body>
+</html>

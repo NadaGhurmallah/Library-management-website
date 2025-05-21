@@ -1,3 +1,4 @@
+# Library/models.py
 from django.db import models
 
 class User(models.Model):
@@ -13,8 +14,7 @@ class Book(models.Model):
     author = models.CharField(max_length=100)
     genre = models.CharField(max_length=50)
     published_date = models.DateField()
-    reserved_by = models.ManyToManyField(User, blank=True, related_name='reserved_books')
+    reserved_by = models.ManyToManyField(User, related_name='reserved_books', blank=True)
 
-
-    def __str__(self):
+    def _str_(self):
         return self.title

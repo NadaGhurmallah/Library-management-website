@@ -12,8 +12,7 @@ from django.contrib import messages
 
 def menu(request, username):
     try:
-        user = User.objects.get(username=username)
-        books = Book.objects.filter(user=user)     
+        books = Book.objects.all()     
         return render(request, 'Library/menu.html', {'books': books, 'username': username})
 
     except User.DoesNotExist:
@@ -119,16 +118,19 @@ def addbook(request, username):
         author = request.POST['author']
         genre = request.POST['genre']
         published_date = request.POST['published_date']
-        
-        try:
-            user = User.objects.get(username=username)
-            new_book = Book(title=title, author=author, genre=genre, published_date=published_date, user=user)
-            new_book.save()
-            return redirect('Library:menu', username=username)  # Redirect back to the menu with the username
-        except User.DoesNotExist:
-            return redirect('Library:login')  # Handle case where user does not exist
 
-    return render(request, 'Library/addbook.html',{'username': username})
+        try:
+            # Create a new book instance
+            new_book = Book(title=title, author=author, genre=genre, published_date=published_date)
+            new_book.save()  # Save the new book to the database
+            messages.success(request, "Book added successfully!")
+            return redirect('Library:menu', username=username)  # Redirect back to the menu
+        except Exception as e:
+            messages.error(request, f"An error occurred: {e}")
+            return redirect('Library:addbook', username=username)  # Redirect back to the add book page
+
+    return render(request, 'Library/addbook.html', {'username': username})
+
 
 
 
